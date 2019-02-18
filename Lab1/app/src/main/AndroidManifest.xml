@@ -19,7 +19,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:configChanges="orientation|screenSize">
+
             <intent-filter>
                 <category android:name="andrandroid.intent.category.LAUNCHER" />
             </intent-filter>
