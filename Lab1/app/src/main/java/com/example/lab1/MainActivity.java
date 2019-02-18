@@ -1,6 +1,5 @@
 package com.example.lab1;
 
-import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.res.ResourcesCompat;
@@ -65,10 +64,7 @@ public class MainActivity extends AppCompatActivity {
             pb = MainActivity.this.findViewById(R.id.progressBar);
             pb.setMax(100);
             pb.setProgress(0);
-        }
 
-        @Override
-        protected Void doInBackground(Void... params) {
             recyclerView = findViewById(R.id.recycler_view);
 
             recyclerView.setHasFixedSize(true);
@@ -80,7 +76,10 @@ public class MainActivity extends AppCompatActivity {
                     ResourcesCompat.getColor(getResources(), R.color.ListViewGrey, null)
             );
             recyclerView.setAdapter(mAdapter);
+        }
 
+        @Override
+        protected Void doInBackground(Void... params) {
             pb.setProgress(10);
 
             final String[] data = new String[1000000];
@@ -104,6 +103,10 @@ public class MainActivity extends AppCompatActivity {
             });
 
             editText = findViewById(R.id.editText);
+            if (editText == null) {
+                return null;
+            }
+
             editText.setFilters(new InputFilter[]{new MinMaxInputFilter(0, data.length)});
             editText.setOnKeyListener(new View.OnKeyListener() {
                 @Override
