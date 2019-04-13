@@ -6,7 +6,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
-class VolleyController {
+public class VolleyController {
     private static VolleyController mInstance;
     private static Context mCtx;
     private RequestQueue mRequestQueue;
@@ -16,7 +16,7 @@ class VolleyController {
         mRequestQueue = getRequestQueue();
     }
 
-    static synchronized VolleyController getInstance(Context ctx) {
+    public static synchronized VolleyController getInstance(Context ctx) {
         if (mInstance == null) {
             mInstance = new VolleyController(ctx);
         }
@@ -32,7 +32,7 @@ class VolleyController {
         return mRequestQueue;
     }
 
-    void addToRequestQueue(Request req) {
+    public void addToRequestQueue(Request req) {
         getRequestQueue().add(req);
     }
 }
